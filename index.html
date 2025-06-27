@@ -1,0 +1,104 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎀 FVE ENGINE – Audio Editor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f8d3e3, #d0bdf4);
+      color: #fff;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.75);
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    .slider-label {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .effects label {
+      display: block;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #ff69b4;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      margin: 10px 8px 0 0;
+      cursor: pointer;
+    }
+    audio {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎀 FVE ENGINE – Audio Editor</h1>
+    
+    <label for="audioFile">Select Audio File (MP3/WAV)</label>
+    <input type="file" id="audioFile" accept=".mp3, .wav" />
+    
+    <div class="slider-label">Pitch: <span id="pitchVal">1.00</span>x</div>
+    <input type="range" id="pitch" min="0.5" max="2" value="1" step="0.01" />
+
+    <div class="slider-label">Tremolo Frequency</div>
+    <input type="range" id="tremFreq" min="0" max="20" value="5" step="0.1" />
+    
+    <div class="slider-label">Tremolo Depth</div>
+    <input type="range" id="tremDepth" min="0" max="1" value="0.5" step="0.01" />
+    
+    <div class="slider-label">Echo Delay (s)</div>
+    <input type="range" id="echoDelay" min="0" max="1" value="0.3" step="0.01" />
+    
+    <div class="slider-label">Echo Decay</div>
+    <input type="range" id="echoDecay" min="0" max="1" value="0.3" step="0.01" />
+    
+    <div class="slider-label">Bitcrush (steps)</div>
+    <input type="range" id="bitDepth" min="1" max="16" value="8" step="1" />
+    
+    <div class="slider-label">Low-pass Cutoff (Hz)</div>
+    <input type="range" id="lowpass" min="100" max="20000" value="8000" step="10" />
+    
+    <div class="effects">
+      <label><input type="checkbox" id="reverb" /> Reverb</label>
+      <label><input type="checkbox" id="lofi" /> Lo-Fi Mode</label>
+    </div>
+    
+    <button class="btn" id="previewBtn">▶ Preview</button>
+    <button class="btn" id="downloadBtn">💾 Download WAV</button>
+
+    <audio id="player" controls></audio>
+  </div>
+
+  <script src="effects.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
